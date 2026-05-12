@@ -2,10 +2,12 @@ import { useState } from "react";
 
 interface Props {
   onSearch: (username: string) => void;
+  /** Called after clearing the input (e.g. reset parent search results). */
+  onClear?: () => void;
   loading: boolean;
 }
 
-export default function SearchBar({ onSearch, loading }: Props) {
+export default function SearchBar({ onSearch, onClear, loading }: Props) {
   const [input, setInput] = useState("");
   const [validationError, setValidationError] = useState("");
 
@@ -53,6 +55,7 @@ export default function SearchBar({ onSearch, loading }: Props) {
             onClick={() => {
               setInput("");
               setValidationError("");
+              onClear?.();
             }}
             aria-label="Clear input"
           >

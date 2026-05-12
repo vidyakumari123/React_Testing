@@ -21,7 +21,7 @@ export default function App() {
           <h1 className="header-title">GitHub User Finder</h1>
         </header>
 
-        <SearchBar onSearch={searchUser} loading={loading} />
+        <SearchBar onSearch={searchUser} onClear={reset} loading={loading} />
 
         <main className="main-content">
           {loading && <LoadingState />}
