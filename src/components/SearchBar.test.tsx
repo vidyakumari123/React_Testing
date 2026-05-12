@@ -64,7 +64,24 @@ describe("SearchBar", () => {
     expect(onSearch).toHaveBeenCalledTimes(1);
   });
 
-  it("clears the va  lidation error when the user starts typing", async () => {
+  it("calls onClear when the clear button is used", async () => {
+    const user = userEvent.setup();
+    const onClear = vi.fn();
+
+    render(
+      <SearchBar onSearch={vi.fn()} onClear={onClear} loading={false} />,
+    );
+
+    await user.type(
+      screen.getByRole("textbox", { name: /github username/i }),
+      "octocat",
+    );
+    await user.click(screen.getByRole("button", { name: /clear input/i }));
+
+    expect(onClear).toHaveBeenCalledTimes(1);
+  });
+
+  it("clears the validation error when the user starts typing", async () => {
     const user = userEvent.setup();
     render(<SearchBar onSearch={vi.fn()} loading={false} />);
 

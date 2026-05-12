@@ -1,0 +1,2 @@
+# Python deps for running TestSprite-generated Playwright scripts locally.
+playwright>=1.40,<2

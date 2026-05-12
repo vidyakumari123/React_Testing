@@ -1,0 +1,586 @@
+[
+  {
+    "id": "TC001",
+    "title": "Search for a valid GitHub user",
+    "description": "Verifies that a visitor can search for a valid GitHub username and see the user profile card and recent repositories rendered.",
+    "category": "Username Search",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the empty state is visible"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with a valid GitHub username"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user profile card is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify recent repositories are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Search for a GitHub user and view the profile and recent repositories",
+    "description": "This verifies that a valid username search returns the user profile card and recent public repositories.",
+    "category": "GitHub User Finder",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the search field with a valid GitHub username"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user profile card is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify recent public repositories are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Block empty username search with inline validation",
+    "description": "This verifies that submitting an empty search shows validation feedback and prevents an empty lookup.",
+    "category": "GitHub User Finder",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an inline validation message is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "See loading while a user lookup is in progress",
+    "description": "Verifies that submitting a username shows a loading state before the profile results appear.",
+    "category": "Username Search",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with a valid GitHub username"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a loading state is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user profile card is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Show loading feedback during a user lookup",
+    "description": "This verifies that submitting a username shows loading feedback while the result is being fetched.",
+    "category": "GitHub User Finder",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the search field with a valid GitHub username"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a loading state is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Block empty username submission",
+    "description": "Verifies that submitting the search without a username shows inline validation and does not start a lookup.",
+    "category": "Username Search",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a validation error is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the empty state remains visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Show a not-found message and recover to search again",
+    "description": "This verifies that an unknown username shows an error state and the user can return to the empty search view.",
+    "category": "GitHub User Finder",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the search field with a username that does not exist"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a not-found error message is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Choose to try again"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the empty search state is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Show search recovery after no user is found",
+    "description": "Verifies that a missing username result shows a not-found message and allows the visitor to return to the empty state and search again.",
+    "category": "Username Search",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with an invalid GitHub username"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a not-found message is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click Try Again"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the empty state is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Show search recovery after an error state",
+    "description": "Verifies that an error result shows a retry option and the visitor can return to the empty state to search again.",
+    "category": "Username Search",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with a GitHub username that triggers an error state"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an error message is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click Try Again"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the empty state is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Display only the six most recently updated repositories",
+    "description": "This verifies that a searched user with many public repositories shows no more than six recent repositories in the results.",
+    "category": "GitHub User Finder",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the search field with a valid GitHub username that has more than six public repositories"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify up to six recent public repositories are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Clear and resubmit a username search",
+    "description": "Verifies that a user can clear a typed username, enter a new one, and successfully run the search again.",
+    "category": "Username Search",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with an initial GitHub username"
+      },
+      {
+        "type": "action",
+        "description": "Use the clear control to empty the username field"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with a different valid GitHub username"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user profile card is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify recent repositories are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "Reset the search field from a loaded result",
+    "description": "This verifies that the clear control returns the interface to the empty state after a successful lookup.",
+    "category": "GitHub User Finder",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the search field with a valid GitHub username"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "action",
+        "description": "Click the control to clear the search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the empty search state is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC013",
+    "title": "Show profile details for a valid user",
+    "description": "Verifies that a successful lookup renders the profile card with optional identity and stats fields visible to the user.",
+    "category": "User Profile Card",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with a valid GitHub username"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the profile avatar is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user name and profile stats are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC014",
+    "title": "Show repository details for a user with public repositories",
+    "description": "Verifies that recent repositories display names, descriptions, language badges, and star counts for a user with public repositories.",
+    "category": "Recent Repositories",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with a valid GitHub username that has public repositories"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify repository cards are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify repository names, descriptions, language badges, and star counts are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC015",
+    "title": "Search again after returning to the empty state",
+    "description": "This verifies that after recovering from an error, the user can submit a new username and see fresh results.",
+    "category": "GitHub User Finder",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the search field with a username that does not exist"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "action",
+        "description": "Choose to try again"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the search field with a valid GitHub username"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user profile card is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify recent public repositories are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC016",
+    "title": "Limit the repository list to six items",
+    "description": "Verifies that only up to six of the most recently updated public repositories are shown after a successful search.",
+    "category": "Recent Repositories",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with a valid GitHub username that has more than six public repositories"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no more than six repository cards are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the most recently updated repositories are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC017",
+    "title": "Show repository details for each recent repository",
+    "description": "This verifies that the repository list includes the expected details for recent public repositories.",
+    "category": "GitHub User Finder",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the search field with a valid GitHub username that has public repositories"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify repository names, descriptions, language badges, and star counts are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC018",
+    "title": "Show the no public repositories state",
+    "description": "This verifies that a user with no public repositories sees the empty repositories message instead of a repository list.",
+    "category": "GitHub User Finder",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the search field with a valid GitHub username that has no public repositories"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a no public repositories message is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC019",
+    "title": "Show the no repositories state for a user without public repos",
+    "description": "Verifies that searching for a user with no public repositories shows the empty repositories message instead of a repository grid.",
+    "category": "Recent Repositories",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the username field with a valid GitHub username that has no public repositories"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the no public repositories message is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify repository cards are not displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC020",
+    "title": "Clear the validation message when typing resumes",
+    "description": "This verifies that the empty-search validation message disappears as soon as the user starts entering a username.",
+    "category": "GitHub User Finder",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Submit the search"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the search field with a username"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the validation message is cleared"
+      }
+    ],
+    "priority": "Low"
+  }
+]
